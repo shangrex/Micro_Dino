@@ -5,13 +5,14 @@ using UnityEngine;
 public class spawn_obstacle : MonoBehaviour
 {
     public Transform obstacle;
-    int block_end = 0;
+    int temp;
+    //int block_end = 0;
     // Start is called before the first frame update
     void Start()
     {
-        int temp;
+        //int temp;
         float height = 0;
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 2; i++)
         {
             Transform block = Instantiate(obstacle);
 
@@ -20,21 +21,19 @@ public class spawn_obstacle : MonoBehaviour
             switch (temp)
             {
                 case 0:
-                    height = -2.4f;
+                    height = 0f;
                     break;
                 case 1:
-                    height = 0.4f;
+                    height = 2.5f;
                     break;
                 case 2:
-                    height = 2.4f;
+                    height = 5f;
                     break;
             }
-            temp = Random.Range(block_end, 24);
-            Debug.Log(block_end);
-            Debug.Log(temp);
-            Debug.Log("\n\n");
-            block.position = new Vector3(13 + block_end + temp, height, 0);
-            block_end += temp;
+            temp = Random.Range(0, 3);
+
+            //block.localPosition = new Vector3(-28, height, 0);
+            block.localPosition = new Vector3(-5 + 12 * i, height, 0);
         }
     }
 

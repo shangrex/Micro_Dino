@@ -7,7 +7,8 @@ public class obstacle_move : MonoBehaviour
     // Start is called before the first frame update
     int temp;
     float height;
-    float speed = 8f;
+    float speed = 5f;
+
     void Start()
     {
         
@@ -21,16 +22,18 @@ public class obstacle_move : MonoBehaviour
         switch (temp)
         {
             case 0:
-                height = -2.4f;
+                height = 0f;
                 break;
             case 1:
-                height = 0.4f;
+                height = 2.5f;
                 break;
             case 2:
-                height = 2.4f;
+                height = 5f;
                 break;
         }
-        if (transform.position.x < -12)
-            transform.position = new Vector3(13, height, 0);
+        if (transform.localPosition.x < -29)
+        {
+            transform.localPosition = new Vector3(-5, height, 0);
+        }
     }
 }
