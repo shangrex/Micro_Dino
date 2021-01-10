@@ -415,6 +415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34303be8db42b684290572597bf4fc67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  port_name: 
+  serial_buffer: 
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1012,7 +1014,7 @@ Transform:
   m_GameObject: {fileID: 2071623211}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -467.40002, y: -194.6, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 11.2, y: 11.2, z: 1}
   m_Children: []
   m_Father: {fileID: 829395258}
   m_RootOrder: 8
@@ -1136,7 +1138,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.040170398}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1147,5 +1149,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.33, y: 0.32}
+  m_Size: {x: 0.33, y: 0.23965919}
   m_EdgeRadius: 0

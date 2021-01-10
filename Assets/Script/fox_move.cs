@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class fox_move : MonoBehaviour
 {
     private Rigidbody2D _rigidbody;
@@ -44,7 +45,12 @@ public class fox_move : MonoBehaviour
         else if (Input.GetKey(KeyCode.S))
         {
             animator.SetInteger("status", 2);
+            transform.localScale = new Vector3(13.6f, 8.6f, 1);
             transform.position += new Vector3(0, 1, 0) * Time.deltaTime * -speed;
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            transform.localScale = new Vector3(13.6f, 13.6f, 1);
         }
         //left
         if (Input.GetKey(KeyCode.A))
@@ -71,15 +77,12 @@ public class fox_move : MonoBehaviour
         //}
 
     }
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.transform.tag == "obstacle")
+        if (collision.transform.tag == "obstacle")
         {
             Debug.Log("collitoin");
-        }
-        else
-        {
-            Debug.Log(collision.transform.name);
         }
     }
 }
