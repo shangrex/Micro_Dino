@@ -13,7 +13,7 @@ void __interrupt(high_priority) ISR(void)
 {
     if (INTCONbits.INT0IF) {
         ClearBuffer();
-        UART_Write_Text("interrupt\n");
+        UART_Write_Text("i\n");
         INTCONbits.INT0IF = 0;
     }
 }
@@ -21,7 +21,6 @@ void __interrupt(high_priority) ISR(void)
 void main(void) 
 {
     SYSTEM_Initialize() ;
-    UART_Write_Text("hey\n");
     while(1) {
         ClearBuffer();
         write_adc();
