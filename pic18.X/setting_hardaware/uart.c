@@ -22,7 +22,7 @@ void UART_Initialize() {
     TXSTAbits.SYNC = 0;             //choose the async moode
     BAUDCONbits.BRG16 = 0 ;          //Read Baud rate table
     TXSTAbits.BRGH = 1;
-    SPBRG = 207;      
+    SPBRG = 25;                     // baud rate 9600
     
    //   Serial enable
     RCSTAbits.SPEN = 1;              //open serial port
