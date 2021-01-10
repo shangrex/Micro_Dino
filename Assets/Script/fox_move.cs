@@ -34,8 +34,14 @@ public class fox_move : MonoBehaviour
         }
         var movement = Input.GetAxis("Horizontal");
         //transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * speed;
-        ////down
-        if (Input.GetKey(KeyCode.S))
+        ////down in the air
+        if (Input.GetKey(KeyCode.S) && Mathf.Abs(_rigidbody.velocity.y) > 0)
+        {
+            animator.SetInteger("status", 5);
+            transform.position += new Vector3(0, 1, 0) * Time.deltaTime * -speed;
+        }
+        //down on the land
+        else if (Input.GetKey(KeyCode.S))
         {
             animator.SetInteger("status", 2);
             transform.position += new Vector3(0, 1, 0) * Time.deltaTime * -speed;
@@ -64,5 +70,16 @@ public class fox_move : MonoBehaviour
         //    _rigidbody.AddForce(new Vector2(0, -jumpforce / 3), ForceMode2D.Impulse);
         //}
 
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag == "obstacle")
+        {
+            Debug.Log("collitoin");
+        }
+        else
+        {
+            Debug.Log(collision.transform.name);
+        }
     }
 }

@@ -34,6 +34,7 @@ public class spawn_obstacle : MonoBehaviour
 
             //block.localPosition = new Vector3(-28, height, 0);
             block.localPosition = new Vector3(-5 + 12 * i, height, 0);
+            block.tag = "obstacle";
         }
     }
 
