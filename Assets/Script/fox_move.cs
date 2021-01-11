@@ -19,7 +19,11 @@ public class fox_move : MonoBehaviour
         transform.localScale = new Vector3(13.6f, 13.6f, 1);
         _rigidbody = GetComponent<Rigidbody2D>();
         animator.SetInteger("status", 1);
+        for(int i = 0; i < heart_count; i++)
+        {
+            image[i].enabled = true;
 
+        }
     }
 
     // Update is called once per frame
@@ -87,7 +91,7 @@ public class fox_move : MonoBehaviour
         if (collision.transform.tag == "obstacle" && heart_count > 0)
         {
             heart_count -= 1;
-            Destroy(image[heart_count]);
+            image[heart_count].enabled = false;
 
         }
 
