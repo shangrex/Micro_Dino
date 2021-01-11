@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider))]
 public class fox_move : MonoBehaviour
@@ -11,6 +12,7 @@ public class fox_move : MonoBehaviour
     public float jumpforce = 500;
     public Animator animator;
     public Image[] image = new Image[5];
+    public Text DieText;
     int heart_count = 5;
 
     // Start is called before the first frame update
@@ -22,8 +24,9 @@ public class fox_move : MonoBehaviour
         for(int i = 0; i < heart_count; i++)
         {
             image[i].enabled = true;
-
+            
         }
+        DieText.enabled = false;
     }
 
     // Update is called once per frame
@@ -44,6 +47,12 @@ public class fox_move : MonoBehaviour
         var movement = Input.GetAxis("Horizontal");
         //transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * speed;
         ////down in the air
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(1);
+        }
+
         if (Input.GetKey(KeyCode.S) && Mathf.Abs(_rigidbody.velocity.y) > 0)
         {
             animator.SetInteger("status", 5);
@@ -93,6 +102,11 @@ public class fox_move : MonoBehaviour
             heart_count -= 1;
             image[heart_count].enabled = false;
 
+        }
+        if (heart_count == 0)
+        {
+            DieText.enabled = true;
+            transform.position = new Vector3(99999,99999,99999);
         }
 
     }

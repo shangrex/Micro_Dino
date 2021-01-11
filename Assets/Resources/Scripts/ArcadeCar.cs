@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 
 
@@ -428,6 +429,10 @@ public class ArcadeCar : MonoBehaviour
 
     void UpdateInput()
     {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(1);
+        }
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
         //Debug.Log (string.Format ("H = {0}", h));
