@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class fox_move_uart : MonoBehaviour
 {
@@ -11,29 +13,46 @@ public class fox_move_uart : MonoBehaviour
     public Animator animator;
     private int serial_speed;
 
+    public Image[] image = new Image[5];
+    public Text DieText;
+    int heart_count = 5;
+    Uart uart;
     // Start is called before the first frame update
+
     void Start()
     {
+        uart = new Uart();
+        transform.localScale = new Vector3(13.6f, 13.6f, 1);
         _rigidbody = GetComponent<Rigidbody2D>();
         animator.SetInteger("status", 1);
         serial_speed = 0;
+        for (int i = 0; i < heart_count; i++) {
+            image[i].enabled = true;
+        }
+        DieText.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         // get uart value
+        uart.Update();
         if (uart.interrupt_flag == true) {
             // jump
-            Debug.Log("jump");
-            uart.interrupt_flag = false;
-            if (_rigidbody.velocity.y == 0) {
-                _rigidbody.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
+            if (heart_count <= 0) {
+                uart.CloseSerial();
+                SceneManager.LoadScene(1);
+            } else {
+                uart.interrupt_flag = false;
+                if (_rigidbody.velocity.y == 0) {
+                    _rigidbody.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
+                }
             }
         } else if (uart.data != "") {
             try {
+                //Debug.Log(uart.data);
                 serial_speed = 512 - Int32.Parse(uart.data);
-            } catch (FormatException) {
+            } catch (Exception) {
                 //serial_speed = 0;
                 //Debug.Log("Format Exception: " + uart.data);
             }
@@ -76,5 +95,27 @@ public class fox_move_uart : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.S)) {
             transform.localScale = new Vector3(13.6f, 13.6f, 1);
         }
+
+        if (Input.GetKey(KeyCode.Escape)) {
+            SceneManager.LoadScene(1);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "obstacle" && heart_count > 0) {
+            heart_count -= 1;
+            image[heart_count].enabled = false;
+        }
+        if (heart_count == 0) {
+            DieText.enabled = true;
+            transform.position = new Vector3(99999, 99999, 99999);
+        }
+
+    }
+
+    private void OnApplicationQuit()
+    {
+        uart.CloseSerial();
     }
 }

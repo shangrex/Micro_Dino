@@ -4,17 +4,23 @@ using UnityEngine;
 using System.IO.Ports;
 using System.Threading;
 
-public class uart : MonoBehaviour
+public class Uart : MonoBehaviour
 {
-    public static SerialPort serial_port;
-    public static string port_name;
-    public static string serial_buffer;
-    public static string data;
-    public static bool interrupt_flag;
+    public SerialPort serial_port;
+    public static string port_name = "COM5";
+    public static int baud_rate = 9600;
+    public string serial_buffer;
+    public string data;
+    public bool interrupt_flag;
 
     // Start is called before the first frame update
 
-    void OpenSerial(string port, int baud)
+    public Uart()
+    {
+        OpenSerial(port_name, baud_rate);
+    }
+
+    public void OpenSerial(string port, int baud)
     {
         serial_port = new SerialPort(port, baud);
         serial_buffer = "";
@@ -23,10 +29,10 @@ public class uart : MonoBehaviour
         try {
             serial_port.Open();
             if (!serial_port.IsOpen) {
-                Debug.Log("Fail to open " + port_name);
+                Debug.Log("Fail to open " + port);
                 return;
             } else {
-                Debug.Log("Success to open " + port_name);
+                Debug.Log("Success to open " + port);
             }
         } catch (System.Exception e) {
             serial_port.Dispose();
@@ -34,32 +40,31 @@ public class uart : MonoBehaviour
         }
     }
 
-    void CloseSerial()
+    public void CloseSerial()
     {
         serial_buffer = "";
         data = "";
         interrupt_flag = false;
         serial_port.Dispose();
+        Debug.Log("Close port: " + port_name);
     }
 
-    void Start()
+    public void Start()
     {
-        OpenSerial("COM4", 9600);
+        OpenSerial(port_name, baud_rate);
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         try {
             string s = serial_port.ReadExisting();
-            if (s == "\n") {
+            if (s == "i") {
+                data = "";
+                interrupt_flag = true;
+            } else if (s == "\n") {
                 //Debug.Log(serial_buffer);
-                if (serial_buffer == "i") {
-                    data = "";
-                    interrupt_flag = true;
-                } else {
-                    data = serial_buffer;
-                }
+                data = serial_buffer;
                 serial_buffer = "";
             } else {
                 serial_buffer += s;
@@ -71,7 +76,6 @@ public class uart : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        serial_port.Dispose();
-        Debug.Log("bye");
+        CloseSerial();
     }
 }
