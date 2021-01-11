@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider))]
 public class fox_move : MonoBehaviour
@@ -9,10 +10,13 @@ public class fox_move : MonoBehaviour
     public float speed = 5f;
     public float jumpforce = 500;
     public Animator animator;
+    public Image[] image = new Image[5];
+    int heart_count = 5;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        transform.localScale = new Vector3(13.6f, 13.6f, 1);
         _rigidbody = GetComponent<Rigidbody2D>();
         animator.SetInteger("status", 1);
 
@@ -52,14 +56,14 @@ public class fox_move : MonoBehaviour
         {
             transform.localScale = new Vector3(13.6f, 13.6f, 1);
         }
-        //left
-        if (Input.GetKey(KeyCode.A))
+        //left and check border
+        if (Input.GetKey(KeyCode.A) && transform.position.x > -92)
         {
             animator.SetInteger("status", 1);
             transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * speed;
         }
         ////right
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) && transform.position.x < -71.5)
         {
             animator.SetInteger("status", 1);
             transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * speed;
@@ -80,9 +84,12 @@ public class fox_move : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "obstacle")
+        if (collision.transform.tag == "obstacle" && heart_count > 0)
         {
-            Debug.Log("collitoin");
+            heart_count -= 1;
+            Destroy(image[heart_count]);
+
         }
+
     }
 }
