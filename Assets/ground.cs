@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ground : MonoBehaviour
 {
-    public Transform ground;
+    //public Transform ground;
     // Start is called before the first frame update
     void Start()
     {
