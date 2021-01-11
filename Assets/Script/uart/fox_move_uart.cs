@@ -22,14 +22,6 @@ public class fox_move_uart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_rigidbody.velocity.y > 0) {
-            animator.SetInteger("status", 3);
-        } else if (_rigidbody.velocity.y < 0) {
-            animator.SetInteger("status", 5);
-        } else {
-            animator.SetInteger("status", 1);
-        }
-
         // get uart value
         if (uart.interrupt_flag == true) {
             // jump
@@ -40,7 +32,6 @@ public class fox_move_uart : MonoBehaviour
             }
         } else if (uart.data != "") {
             try {
-                Debug.Log(uart.data);
                 serial_speed = 512 - Int32.Parse(uart.data);
             } catch (FormatException) {
                 //serial_speed = 0;
@@ -48,26 +39,42 @@ public class fox_move_uart : MonoBehaviour
             }
         }
 
-        // left right
-        float ratio = (float)serial_speed / 102.3f;
-        transform.position += new Vector3(ratio, 0, 0) * Time.deltaTime * speed;
-
-        if (Input.GetKey(KeyCode.S) && Mathf.Abs(_rigidbody.velocity.y) > 0) {
+        if (_rigidbody.velocity.y > 0) {
+            //jump
+            animator.SetInteger("status", 3);
+        } else if (_rigidbody.velocity.y < 0) {
+            //dowm
+            animator.SetInteger("status", 5);
+        } else {
+            //run
+            animator.SetInteger("status", 1);
+        }
+        //down in the air
+        if (serial_speed > 0 && Mathf.Abs(_rigidbody.velocity.y) > 0) {
             animator.SetInteger("status", 5);
             transform.position += new Vector3(0, 1, 0) * Time.deltaTime * -speed;
-        } else if (Input.GetKey(KeyCode.S)) {
+        }
+        //down on the land
+        else if (serial_speed > 0) {
             animator.SetInteger("status", 2);
             transform.localScale = new Vector3(13.6f, 8.6f, 1);
             transform.position += new Vector3(0, 1, 0) * Time.deltaTime * -speed;
+        } else {
+            transform.localScale = new Vector3(13.6f, 13.6f, 1);
         }
 
-        
-
+        var movement = Input.GetAxis("Horizontal");
+        //left
+        if (Input.GetKey(KeyCode.A)) {
+            transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * speed;
+        }
+        ////right
+        if (Input.GetKey(KeyCode.D)) {
+            transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * speed;
+        }
 
         if (Input.GetKeyUp(KeyCode.S)) {
             transform.localScale = new Vector3(13.6f, 13.6f, 1);
         }
-
-
     }
 }
