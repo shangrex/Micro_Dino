@@ -59,8 +59,9 @@ public class Uart : MonoBehaviour
     {
         try {
             string s = serial_port.ReadExisting();
-            if (s == "i") {
+            if (s[0] == 'i') {
                 data = "";
+                Debug.Log("hi");
                 interrupt_flag = true;
             } else if (s == "\n") {
                 //Debug.Log(serial_buffer);
@@ -72,6 +73,11 @@ public class Uart : MonoBehaviour
         } catch (System.Exception) {
             //Debug.Log(e.Message);
         }
+    }
+
+    public void Send(string s)
+    {
+        serial_port.Write(s);
     }
 
     void OnApplicationQuit()

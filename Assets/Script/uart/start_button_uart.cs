@@ -6,21 +6,12 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System;
 
-public class start_button_uart : MonoBehaviour, IPointerClickHandler
+public class start_button_uart : MonoBehaviour
 {
     public int selectValue;
-    public bool isSelected = false;
     public GameObject[] button;
     Uart uart;
 
-    public void OnPointerClick(PointerEventData e)
-    {
-        Scene cur_scene = SceneManager.GetActiveScene();
-        if (gameObject.name == "fox_start_button")
-            SceneManager.LoadScene(0);
-        if (gameObject.name == "car_start_button")
-            SceneManager.LoadScene(2);
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +33,7 @@ public class start_button_uart : MonoBehaviour, IPointerClickHandler
             }
         } else if (uart.data != "") {
             try {
-                selectValue = Int32.Parse(uart.data);
+                selectValue = Int32.Parse(uart.data.Split(',')[0]);
             } catch (Exception) {}
         }
 

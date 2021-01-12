@@ -51,9 +51,9 @@ public class fox_move_uart : MonoBehaviour
         } else if (uart.data != "") {
             try {
                 //Debug.Log(uart.data);
-                serial_speed = 512 - Int32.Parse(uart.data);
+                //serial_speed = 512 - Int32.Parse(uart.data);
+                serial_speed = 512 - Int32.Parse(uart.data.Split(',')[0]);
             } catch (Exception) {
-                //serial_speed = 0;
                 //Debug.Log("Format Exception: " + uart.data);
             }
         }
@@ -111,7 +111,6 @@ public class fox_move_uart : MonoBehaviour
             DieText.enabled = true;
             transform.position = new Vector3(99999, 99999, 99999);
         }
-
     }
 
     private void OnApplicationQuit()
