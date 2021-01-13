@@ -7,7 +7,7 @@ using System.Threading;
 public class Uart : MonoBehaviour
 {
     public SerialPort serial_port;
-    public static string port_name = "COM5";
+    public static string port_name = "COM6";
     public static int baud_rate = 9600;
     public string serial_buffer;
     public string data;
@@ -83,5 +83,10 @@ public class Uart : MonoBehaviour
     void OnApplicationQuit()
     {
         CloseSerial();
+    }
+
+    public void Clear()
+    {
+        serial_port.DiscardInBuffer();
     }
 }

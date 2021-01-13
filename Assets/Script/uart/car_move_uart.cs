@@ -9,7 +9,7 @@ public class car_move_uart : MonoBehaviour
     const int WHEEL_LEFT_INDEX = 0;
     const int WHEEL_RIGHT_INDEX = 1;
     const float wheelWidth = 0.085f;
-
+    float serial_speed = 0f;
     public class WheelData
     {
         // is wheel touched ground or not ?
@@ -254,7 +254,7 @@ public class car_move_uart : MonoBehaviour
         rb.centerOfMass = centerOfMass;
 
         uart = new Uart();
-        Time.fixedDeltaTime = 0.005f;
+        //Time.fixedDeltaTime = 0.005f;
     }
 
     void OnValidate()
@@ -418,21 +418,21 @@ public class car_move_uart : MonoBehaviour
         //uart.Update();
         try {
             string[] sdata = uart.data.Split(',');
-            //Debug.Log(sdata[0] + " " + sdata[1]);
-            v = (float)(512 - Int32.Parse(sdata[0])) / 2048;
-            h = (float)(512 - Int32.Parse(sdata[1])) / 2048;
+            v = (float)(512 - Int32.Parse(sdata[0])) / 512;
+            h = (float)(512 - Int32.Parse(sdata[1])) / 512;
             //Debug.Log(Time.fixedDeltaTime);
         } catch (Exception e) {
             //Debug.Log(e.Message + " " + uart.data);
+            return;
         }
-        Debug.Log(Time.fixedDeltaTime);
         //Debug.Log (string.Format ("H = {0}", h));
 
         if (!controllable) {
             v = 0.0f;
             h = 0.0f;
         }
-
+        serial_speed = v;
+        Debug.Log(serial_speed);
         if (Input.GetKey(KeyCode.R) && controllable) {
             Debug.Log("Reset pressed");
             Ray resetRay = new Ray();
@@ -483,13 +483,13 @@ public class car_move_uart : MonoBehaviour
         if (v > 0.1f) {
             if (speed < -0.5f) {
                 isBrakeNow = true;
-            } else {
+            } else if (speed * 3.6f < v * 100) {
                 isAcceleration = true;
             }
         } else if (v < -0.1f) {
             if (speed > 0.5f) {
                 isBrakeNow = true;
-            } else {
+            } else if (speed * 3.6f > v * 100) {
                 isReverseAcceleration = true;
             }
         }
@@ -522,15 +522,16 @@ public class car_move_uart : MonoBehaviour
 
         //TODO: axles[0] always used for steering
 
-        if (Mathf.Abs(h) > 0.001f) {
+        if (Mathf.Abs(h) < 50.0f) {
             float speedKmH = Mathf.Abs(speed) * 3.6f;
 
             // maximum steer speed when hand-brake is pressed
             speedKmH *= GetSteeringHandBrakeK();
 
-            float steerSpeed = steeringSpeed.Evaluate(speedKmH);
+            /* original code */
+            //float newSteerAngle = axles[0].steerAngle + (c steerSpeed);
+            float newSteerAngle = h * 30;
 
-            float newSteerAngle = axles[0].steerAngle + (h * steerSpeed);
             float sgn = Mathf.Sign(newSteerAngle);
 
             float steerLimit = GetSteerAngleLimitInDeg(speed);
@@ -561,6 +562,7 @@ public class car_move_uart : MonoBehaviour
     void Update()
     {
         uart.Update();
+        uart.Clear();
         if (uart.interrupt_flag == true) {
             SceneManager.LoadScene(1);
             uart.CloseSerial();
@@ -571,7 +573,6 @@ public class car_move_uart : MonoBehaviour
     void FixedUpdate()
     {
         UpdateInput();
-
         accelerationForceMagnitude = CalcAccelerationForceMagnitude();
 
         // 0.8 - pressed
@@ -643,7 +644,9 @@ public class car_move_uart : MonoBehaviour
             float speedKmH = Mathf.Abs(speed) * 3.6f;
 
             float downForceAmount = downForceCurve.Evaluate(speedKmH) / 100.0f;
-
+            if (speedKmH > serial_speed * 100) {
+                downForceAmount = 0.0f;
+            }
             float mass = rb.mass;
 
             rb.AddForce(carDown * mass * downForceAmount * downForce);
@@ -1018,6 +1021,8 @@ public class car_move_uart : MonoBehaviour
         if (!isBrake && axle.isPowered && Mathf.Abs(accelerationForceMagnitude) > 0.01f) {
             Vector3 accForcePoint = wheelData.touchPoint.point - (wsDownDirection * 0.2f);
             Vector3 engineForce = c_fwd * accelerationForceMagnitude / (float)numberOfPoweredWheels / dt;
+            
+            
             AddForceAtPosition(engineForce, accForcePoint);
 
             if (debugDraw) {

@@ -24,7 +24,6 @@ public class fox_move : MonoBehaviour
         for(int i = 0; i < heart_count; i++)
         {
             image[i].enabled = true;
-            
         }
         DieText.enabled = false;
     }
