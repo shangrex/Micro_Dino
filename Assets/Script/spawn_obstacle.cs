@@ -49,7 +49,7 @@ public class spawn_obstacle : MonoBehaviour
     {
         int count_time = fox_move_test.count_time;
         //when % 100 speed += 1
-        if(count_time % 10 == 0 && speed < 10f)
+        if(count_time % 10 == 0 && speed < 10f && count_time != 0)
         {
             speed += 0.5f;
             Debug.Log(count_time);
