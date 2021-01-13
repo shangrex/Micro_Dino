@@ -77,7 +77,14 @@ public class Uart : MonoBehaviour
 
     public void Send(string s)
     {
-        serial_port.Write(s);
+        try
+        {
+            serial_port.Write(s);
+        }
+        catch (System.Exception)
+        {
+
+        }
     }
 
     void OnApplicationQuit()
