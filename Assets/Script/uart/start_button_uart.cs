@@ -16,6 +16,7 @@ public class start_button_uart : MonoBehaviour
     void Start()
     {
         uart = new Uart();
+        uart.Send("mmm");
         selectValue = 0;
     }
 
@@ -36,6 +37,7 @@ public class start_button_uart : MonoBehaviour
                 selectValue = Int32.Parse(uart.data.Split(',')[0]);
             } catch (Exception) {}
         }
+        Debug.Log(uart.data);
 
         if (selectValue < 512) {
             button[0].GetComponent<Image>().color = new Color(0.7f, 0.4f, 0.4f);

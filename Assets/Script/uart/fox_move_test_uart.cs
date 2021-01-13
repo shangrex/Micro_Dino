@@ -16,7 +16,12 @@ public class fox_move_test_uart : MonoBehaviour
     public Image[] image = new Image[5];
     public Text DieText;
     int heart_count = 5;
-
+    int last_ser = 250;
+    int standard_ser = 0;
+    int standard_t = 0;
+    int t = 0;
+    int squad_time = 4000;
+    bool is_squad = false;
     Uart uart;
     private int serial_speed;
 
@@ -39,6 +44,8 @@ public class fox_move_test_uart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        t += 1;
+    
         // get uart value
         uart.Update();
         if (uart.interrupt_flag == true) {
@@ -57,17 +64,66 @@ public class fox_move_test_uart : MonoBehaviour
             try {
                 //Debug.Log(uart.data);
                 //serial_speed = 512 - Int32.Parse(uart.data);
-                serial_speed = Int32.Parse(uart.data);
+                string s = uart.data;
+                bool is_t = false;
+                for(int i =0; i < s.Length; i++) {
+                    if(s[i] == 't') {
+                        is_t = true;
+                        count_time += 1;
+                    }
+                }
+                if(is_t == false)serial_speed = Int32.Parse(uart.data);
             } catch (Exception) {
                 //Debug.Log("Format Exception: " + uart.data);
             }
         }
 
-        Debug.Log(uart.data);
+       // Debug.Log(uart.data);
         /*
          *  serial_speed is the value of acc
          */
+        if(Math.Abs( serial_speed - last_ser) < 20 ) {
+            standard_ser = serial_speed;
+        }
+        if(serial_speed - last_ser > 100 && t - standard_t > 100 && t > 100 && is_squad == false) {
+            //jump
+            if ( _rigidbody.velocity.y == 0) {
+                Debug.Log("jmp");
+                _rigidbody.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);
+            }
 
+            standard_t = t;
+        }
+        else if((serial_speed - last_ser < -100 && t - standard_t > 100)) {
+            Debug.Log("squad");
+            is_squad = true;
+            squad_time = 0;
+        }
+        last_ser = serial_speed;
+        
+        if(is_squad == true) {
+            squad_time += 1;
+            ////down in the air
+            if (Mathf.Abs(_rigidbody.velocity.y) > 0) {
+                animator.SetInteger("status", 5);
+                transform.position += new Vector3(0, 1, 0) * Time.deltaTime * -speed;
+                _rigidbody.AddForce(new Vector2(0, -0.5f), ForceMode2D.Impulse);
+            }
+            //down on the land
+            else {
+                animator.SetInteger("status", 2);
+                transform.localScale = new Vector3(13.6f, 8.6f, 1);
+                transform.position += new Vector3(0, 1, 0) * Time.deltaTime * -speed;
+            }
+
+            standard_t = t;
+        }
+
+        if(squad_time > 700) {
+            is_squad = false;
+            transform.localScale = new Vector3(13.6f, 13.6f, 1);
+
+        }
 
         if (count_time % 10 == 0) {
             //bizzer loudly speek
@@ -112,6 +168,7 @@ public class fox_move_test_uart : MonoBehaviour
             animator.SetInteger("status", 1);
             transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * speed;
         }
+        //jmp
         if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W)) && _rigidbody.velocity.y == 0) {
             Debug.Log("jmp");
             _rigidbody.AddForce(new Vector2(0, jumpforce), ForceMode2D.Impulse);

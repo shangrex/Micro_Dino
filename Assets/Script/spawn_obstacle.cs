@@ -47,7 +47,7 @@ public class spawn_obstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int count_time = fox_move_test.count_time;
+        int count_time = fox_move_test_uart.count_time;
         //when % 100 speed += 1
         if(count_time % 10 == 0 && speed < 10f && count_time != 0)
         {
