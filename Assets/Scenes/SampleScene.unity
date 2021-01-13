@@ -867,6 +867,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacle: {fileID: 2133644128945177311, guid: b2768010dc437de419cbee923ccc50e3, type: 3}
+  block:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!212 &1064902356
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1372,6 +1375,7 @@ GameObject:
   - component: {fileID: 2071623216}
   - component: {fileID: 2071623214}
   - component: {fileID: 2071623218}
+  - component: {fileID: 2071623215}
   m_Layer: 0
   m_Name: fox
   m_TagString: Untagged
@@ -1463,6 +1467,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2071623215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071623211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b60567f1359294b97eb0e8164da972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  jumpforce: 10
+  animator: {fileID: 2071623214}
+  image:
+  - {fileID: 2003812712}
+  - {fileID: 2046411792}
+  - {fileID: 618199717}
+  - {fileID: 941775979}
+  - {fileID: 2102848603}
+  DieText: {fileID: 764897291}
 --- !u!50 &2071623216
 Rigidbody2D:
   serializedVersion: 4
@@ -1517,7 +1543,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071623211}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04a39d78e98d3074291ada9bfa590099, type: 3}
   m_Name: 

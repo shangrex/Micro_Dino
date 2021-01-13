@@ -1,8 +1,8 @@
 #include <xc.h>
 
 void ADC_Initialize(void) {
-    TRISA = 0xff;		// Set as input port
-    ADCON1 = 0x0e;  	// Ref vtg is VDD & Configure pin as analog pin
+    TRISA = 0x07;		// Set as input port
+    ADCON1 = 0x0c;  	// Ref vtg is VDD & Configure pin as analog pin
     // ADCON2 = 0x92;  	
     ADFM = 1 ;          // Right Justifie
     ADCON2bits.ADCS = 7; // 

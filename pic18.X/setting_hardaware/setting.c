@@ -71,6 +71,7 @@ void SYSTEM_Initialize(void)
     
     //button init
     TRISBbits.TRISB0 = 1;
+    TRISBbits.TRISB1 = 0;
 }
 
 void OSCILLATOR_Initialize(void)

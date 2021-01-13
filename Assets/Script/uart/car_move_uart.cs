@@ -519,44 +519,29 @@ public class car_move_uart : MonoBehaviour
         axles[1].handBrakeLeft = isHandBrake;
         axles[1].handBrakeRight = isHandBrake;
 
-
+        /* turn wheel */
         //TODO: axles[0] always used for steering
 
-        if (Mathf.Abs(h) < 50.0f) {
-            float speedKmH = Mathf.Abs(speed) * 3.6f;
+        float speedKmH = Mathf.Abs(speed) * 3.6f;
 
-            // maximum steer speed when hand-brake is pressed
-            speedKmH *= GetSteeringHandBrakeK();
+        // maximum steer speed when hand-brake is pressed
+        speedKmH *= GetSteeringHandBrakeK();
 
-            /* original code */
-            //float newSteerAngle = axles[0].steerAngle + (c steerSpeed);
-            float newSteerAngle = h * 30;
+        /* original code */
+        //float newSteerAngle = axles[0].steerAngle + (c steerSpeed);
+        float newSteerAngle = h * 40;
 
-            float sgn = Mathf.Sign(newSteerAngle);
+        float sgn = Mathf.Sign(newSteerAngle);
 
-            float steerLimit = GetSteerAngleLimitInDeg(speed);
+        float steerLimit = GetSteerAngleLimitInDeg(speed);
 
-            newSteerAngle = Mathf.Min(Math.Abs(newSteerAngle), steerLimit) * sgn;
+        newSteerAngle = Mathf.Min(Math.Abs(newSteerAngle), steerLimit) * sgn;
 
+        // prevent angle stiff
+        if (h > -0.8f && h < 0.8f) {
             axles[0].steerAngle = newSteerAngle;
-        } else {
-            float speedKmH = Mathf.Abs(speed) * 3.6f;
-
-            float angleReturnSpeedDegPerSec = steeringResetSpeed.Evaluate(speedKmH);
-
-            angleReturnSpeedDegPerSec = Mathf.Lerp(0.0f, angleReturnSpeedDegPerSec, Mathf.Clamp01(speedKmH / 2.0f));
-
-
-            float ang = axles[0].steerAngle;
-            float sgn = Mathf.Sign(ang);
-
-            ang = Mathf.Abs(ang);
-
-            ang -= angleReturnSpeedDegPerSec * Time.fixedDeltaTime;
-            ang = Mathf.Max(ang, 0.0f) * sgn;
-
-            axles[0].steerAngle = ang;
         }
+
     }
 
     void Update()
