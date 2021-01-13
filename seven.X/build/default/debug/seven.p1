@@ -1,0 +1,740 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"4697 C:\Program Files\Microchip\xc8\v2.30\pic\include\proc/pic18f4520.h
+[s S185 :4 `uc 1 :2 `uc 1 ]
+[n S185 . PCFG VCFG ]
+"4701
+[s S186 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S186 . PCFG0 PCFG1 PCFG2 PCFG3 VCFG0 VCFG1 ]
+"4709
+[s S187 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S187 . . CHSN3 VCFG01 VCFG11 ]
+"4696
+[u S184 `S185 1 `S186 1 `S187 1 ]
+[n S184 . . . . ]
+"4716
+[v _ADCON1bits `VS184 ~T0 @X0 0 e@4033 ]
+"2144
+[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
+"1314
+[v _LATD `Vuc ~T0 @X0 0 e@3980 ]
+"1489
+[s S60 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S60 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
+"1499
+[s S61 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S61 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"1488
+[u S59 `S60 1 `S61 1 ]
+[n S59 . . . ]
+"1510
+[v _TRISAbits `VS59 ~T0 @X0 0 e@3986 ]
+"978
+[v _LATA `Vuc ~T0 @X0 0 e@3977 ]
+"1711
+[s S66 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S66 . TRISB0 TRISB1 TRISB2 TRISB3 TRISB4 TRISB5 TRISB6 TRISB7 ]
+"1721
+[s S67 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S67 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"1710
+[u S65 `S66 1 `S67 1 ]
+[n S65 . . . ]
+"1732
+[v _TRISBbits `VS65 ~T0 @X0 0 e@3987 ]
+"278
+[s S17 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S17 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"288
+[s S18 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S18 . INT0 INT1 INT2 CCP2 KBI0 KBI1 KBI2 KBI3 ]
+"298
+[s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S19 . AN12 AN10 AN8 AN9 AN11 PGM PGC PGD ]
+"308
+[s S20 :1 `uc 1 ]
+[n S20 . FLT0 ]
+"311
+[s S21 :3 `uc 1 :1 `uc 1 ]
+[n S21 . . CCP2_PA2 ]
+"277
+[u S16 `S17 1 `S18 1 `S19 1 `S20 1 `S21 1 ]
+[n S16 . . . . . . ]
+"316
+[v _PORTBbits `VS16 ~T0 @X0 0 e@3969 ]
+"5661
+[s S238 :1 `uc 1 ]
+[n S238 . NOT_BOR ]
+"5664
+[s S239 :1 `uc 1 :1 `uc 1 ]
+[n S239 . . NOT_POR ]
+"5668
+[s S240 :2 `uc 1 :1 `uc 1 ]
+[n S240 . . NOT_PD ]
+"5672
+[s S241 :3 `uc 1 :1 `uc 1 ]
+[n S241 . . NOT_TO ]
+"5676
+[s S242 :4 `uc 1 :1 `uc 1 ]
+[n S242 . . NOT_RI ]
+"5680
+[s S243 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S243 . nBOR nPOR nPD nTO nRI . SBOREN IPEN ]
+"5690
+[s S244 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S244 . BOR POR PD TO RI ]
+"5660
+[u S237 `S238 1 `S239 1 `S240 1 `S241 1 `S242 1 `S243 1 `S244 1 ]
+[n S237 . . . . . . . . ]
+"5698
+[v _RCONbits `VS237 ~T0 @X0 0 e@4048 ]
+"6699
+[s S275 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S275 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"6709
+[s S276 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S276 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"6719
+[s S277 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S277 . . GIEL GIEH ]
+"6698
+[u S274 `S275 1 `S276 1 `S277 1 ]
+[n S274 . . . . ]
+"6725
+[v _INTCONbits `VS274 ~T0 @X0 0 e@4082 ]
+"6175
+[s S262 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S262 . T0PS PSA T0SE T0CS T08BIT TMR0ON ]
+"6183
+[s S263 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S263 . T0PS0 T0PS1 T0PS2 T0PS3 . T016BIT ]
+"6174
+[u S261 `S262 1 `S263 1 ]
+[n S261 . . . ]
+"6192
+[v _T0CONbits `VS261 ~T0 @X0 0 e@4053 ]
+"6266
+[v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
+"6259
+[v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
+"1933
+[s S72 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S72 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+"1943
+[s S73 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S73 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+"1932
+[u S71 `S72 1 `S73 1 ]
+[n S71 . . . ]
+"1954
+[v _TRISCbits `VS71 ~T0 @X0 0 e@3988 ]
+"1208
+[s S51 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S51 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
+"1218
+[s S52 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S52 . LC0 LC1 LC2 LC3 LC4 LC5 LC6 LC7 ]
+"1207
+[u S50 `S51 1 `S52 1 ]
+[n S50 . . . ]
+"1229
+[v _LATCbits `VS50 ~T0 @X0 0 e@3979 ]
+"55 C:\Program Files\Microchip\xc8\v2.30\pic\include\proc/pic18f4520.h
+[; <" PORTA equ 0F80h ;# ">
+"274
+[; <" PORTB equ 0F81h ;# ">
+"453
+[; <" PORTC equ 0F82h ;# ">
+"635
+[; <" PORTD equ 0F83h ;# ">
+"777
+[; <" PORTE equ 0F84h ;# ">
+"980
+[; <" LATA equ 0F89h ;# ">
+"1092
+[; <" LATB equ 0F8Ah ;# ">
+"1204
+[; <" LATC equ 0F8Bh ;# ">
+"1316
+[; <" LATD equ 0F8Ch ;# ">
+"1428
+[; <" LATE equ 0F8Dh ;# ">
+"1480
+[; <" TRISA equ 0F92h ;# ">
+"1485
+[; <" DDRA equ 0F92h ;# ">
+"1702
+[; <" TRISB equ 0F93h ;# ">
+"1707
+[; <" DDRB equ 0F93h ;# ">
+"1924
+[; <" TRISC equ 0F94h ;# ">
+"1929
+[; <" DDRC equ 0F94h ;# ">
+"2146
+[; <" TRISD equ 0F95h ;# ">
+"2151
+[; <" DDRD equ 0F95h ;# ">
+"2368
+[; <" TRISE equ 0F96h ;# ">
+"2373
+[; <" DDRE equ 0F96h ;# ">
+"2532
+[; <" OSCTUNE equ 0F9Bh ;# ">
+"2597
+[; <" PIE1 equ 0F9Dh ;# ">
+"2674
+[; <" PIR1 equ 0F9Eh ;# ">
+"2751
+[; <" IPR1 equ 0F9Fh ;# ">
+"2828
+[; <" PIE2 equ 0FA0h ;# ">
+"2894
+[; <" PIR2 equ 0FA1h ;# ">
+"2960
+[; <" IPR2 equ 0FA2h ;# ">
+"3026
+[; <" EECON1 equ 0FA6h ;# ">
+"3092
+[; <" EECON2 equ 0FA7h ;# ">
+"3099
+[; <" EEDATA equ 0FA8h ;# ">
+"3106
+[; <" EEADR equ 0FA9h ;# ">
+"3113
+[; <" RCSTA equ 0FABh ;# ">
+"3118
+[; <" RCSTA1 equ 0FABh ;# ">
+"3323
+[; <" TXSTA equ 0FACh ;# ">
+"3328
+[; <" TXSTA1 equ 0FACh ;# ">
+"3579
+[; <" TXREG equ 0FADh ;# ">
+"3584
+[; <" TXREG1 equ 0FADh ;# ">
+"3591
+[; <" RCREG equ 0FAEh ;# ">
+"3596
+[; <" RCREG1 equ 0FAEh ;# ">
+"3603
+[; <" SPBRG equ 0FAFh ;# ">
+"3608
+[; <" SPBRG1 equ 0FAFh ;# ">
+"3615
+[; <" SPBRGH equ 0FB0h ;# ">
+"3622
+[; <" T3CON equ 0FB1h ;# ">
+"3734
+[; <" TMR3 equ 0FB2h ;# ">
+"3741
+[; <" TMR3L equ 0FB2h ;# ">
+"3748
+[; <" TMR3H equ 0FB3h ;# ">
+"3755
+[; <" CMCON equ 0FB4h ;# ">
+"3845
+[; <" CVRCON equ 0FB5h ;# ">
+"3924
+[; <" ECCP1AS equ 0FB6h ;# ">
+"3929
+[; <" ECCPAS equ 0FB6h ;# ">
+"4086
+[; <" PWM1CON equ 0FB7h ;# ">
+"4091
+[; <" ECCP1DEL equ 0FB7h ;# ">
+"4224
+[; <" BAUDCON equ 0FB8h ;# ">
+"4229
+[; <" BAUDCTL equ 0FB8h ;# ">
+"4404
+[; <" CCP2CON equ 0FBAh ;# ">
+"4483
+[; <" CCPR2 equ 0FBBh ;# ">
+"4490
+[; <" CCPR2L equ 0FBBh ;# ">
+"4497
+[; <" CCPR2H equ 0FBCh ;# ">
+"4504
+[; <" CCP1CON equ 0FBDh ;# ">
+"4601
+[; <" CCPR1 equ 0FBEh ;# ">
+"4608
+[; <" CCPR1L equ 0FBEh ;# ">
+"4615
+[; <" CCPR1H equ 0FBFh ;# ">
+"4622
+[; <" ADCON2 equ 0FC0h ;# ">
+"4693
+[; <" ADCON1 equ 0FC1h ;# ">
+"4778
+[; <" ADCON0 equ 0FC2h ;# ">
+"4897
+[; <" ADRES equ 0FC3h ;# ">
+"4904
+[; <" ADRESL equ 0FC3h ;# ">
+"4911
+[; <" ADRESH equ 0FC4h ;# ">
+"4918
+[; <" SSPCON2 equ 0FC5h ;# ">
+"5013
+[; <" SSPCON1 equ 0FC6h ;# ">
+"5083
+[; <" SSPSTAT equ 0FC7h ;# ">
+"5304
+[; <" SSPADD equ 0FC8h ;# ">
+"5311
+[; <" SSPBUF equ 0FC9h ;# ">
+"5318
+[; <" T2CON equ 0FCAh ;# ">
+"5416
+[; <" PR2 equ 0FCBh ;# ">
+"5421
+[; <" MEMCON equ 0FCBh ;# ">
+"5526
+[; <" TMR2 equ 0FCCh ;# ">
+"5533
+[; <" T1CON equ 0FCDh ;# ">
+"5636
+[; <" TMR1 equ 0FCEh ;# ">
+"5643
+[; <" TMR1L equ 0FCEh ;# ">
+"5650
+[; <" TMR1H equ 0FCFh ;# ">
+"5657
+[; <" RCON equ 0FD0h ;# ">
+"5790
+[; <" WDTCON equ 0FD1h ;# ">
+"5818
+[; <" HLVDCON equ 0FD2h ;# ">
+"5823
+[; <" LVDCON equ 0FD2h ;# ">
+"6088
+[; <" OSCCON equ 0FD3h ;# ">
+"6171
+[; <" T0CON equ 0FD5h ;# ">
+"6254
+[; <" TMR0 equ 0FD6h ;# ">
+"6261
+[; <" TMR0L equ 0FD6h ;# ">
+"6268
+[; <" TMR0H equ 0FD7h ;# ">
+"6275
+[; <" STATUS equ 0FD8h ;# ">
+"6346
+[; <" FSR2 equ 0FD9h ;# ">
+"6353
+[; <" FSR2L equ 0FD9h ;# ">
+"6360
+[; <" FSR2H equ 0FDAh ;# ">
+"6367
+[; <" PLUSW2 equ 0FDBh ;# ">
+"6374
+[; <" PREINC2 equ 0FDCh ;# ">
+"6381
+[; <" POSTDEC2 equ 0FDDh ;# ">
+"6388
+[; <" POSTINC2 equ 0FDEh ;# ">
+"6395
+[; <" INDF2 equ 0FDFh ;# ">
+"6402
+[; <" BSR equ 0FE0h ;# ">
+"6409
+[; <" FSR1 equ 0FE1h ;# ">
+"6416
+[; <" FSR1L equ 0FE1h ;# ">
+"6423
+[; <" FSR1H equ 0FE2h ;# ">
+"6430
+[; <" PLUSW1 equ 0FE3h ;# ">
+"6437
+[; <" PREINC1 equ 0FE4h ;# ">
+"6444
+[; <" POSTDEC1 equ 0FE5h ;# ">
+"6451
+[; <" POSTINC1 equ 0FE6h ;# ">
+"6458
+[; <" INDF1 equ 0FE7h ;# ">
+"6465
+[; <" WREG equ 0FE8h ;# ">
+"6477
+[; <" FSR0 equ 0FE9h ;# ">
+"6484
+[; <" FSR0L equ 0FE9h ;# ">
+"6491
+[; <" FSR0H equ 0FEAh ;# ">
+"6498
+[; <" PLUSW0 equ 0FEBh ;# ">
+"6505
+[; <" PREINC0 equ 0FECh ;# ">
+"6512
+[; <" POSTDEC0 equ 0FEDh ;# ">
+"6519
+[; <" POSTINC0 equ 0FEEh ;# ">
+"6526
+[; <" INDF0 equ 0FEFh ;# ">
+"6533
+[; <" INTCON3 equ 0FF0h ;# ">
+"6625
+[; <" INTCON2 equ 0FF1h ;# ">
+"6695
+[; <" INTCON equ 0FF2h ;# ">
+"6812
+[; <" PROD equ 0FF3h ;# ">
+"6819
+[; <" PRODL equ 0FF3h ;# ">
+"6826
+[; <" PRODH equ 0FF4h ;# ">
+"6833
+[; <" TABLAT equ 0FF5h ;# ">
+"6842
+[; <" TBLPTR equ 0FF6h ;# ">
+"6849
+[; <" TBLPTRL equ 0FF6h ;# ">
+"6856
+[; <" TBLPTRH equ 0FF7h ;# ">
+"6863
+[; <" TBLPTRU equ 0FF8h ;# ">
+"6872
+[; <" PCLAT equ 0FF9h ;# ">
+"6879
+[; <" PC equ 0FF9h ;# ">
+"6886
+[; <" PCL equ 0FF9h ;# ">
+"6893
+[; <" PCLATH equ 0FFAh ;# ">
+"6900
+[; <" PCLATU equ 0FFBh ;# ">
+"6907
+[; <" STKPTR equ 0FFCh ;# ">
+"6981
+[; <" TOS equ 0FFDh ;# ">
+"6988
+[; <" TOSL equ 0FFDh ;# ">
+"6995
+[; <" TOSH equ 0FFEh ;# ">
+"7002
+[; <" TOSU equ 0FFFh ;# ">
+"22 ./seven.h
+[; ;./seven.h: 22: int digit0;
+[v _digit0 `i ~T0 @X0 1 e ]
+"23
+[; ;./seven.h: 23: int digit1;
+[v _digit1 `i ~T0 @X0 1 e ]
+"24
+[; ;./seven.h: 24: int digit2;
+[v _digit2 `i ~T0 @X0 1 e ]
+"5 seven.c
+[; ;seven.c: 5: void seven_Init(){
+[v _seven_Init `(v ~T0 @X0 1 ef ]
+{
+[e :U _seven_Init ]
+[f ]
+"6
+[; ;seven.c: 6:     ADCON1bits.PCFG = 0b1110;
+[e = . . _ADCON1bits 0 0 -> -> 14 `i `uc ]
+"7
+[; ;seven.c: 7:     TRISD = 0;
+[e = _TRISD -> -> 0 `i `uc ]
+"8
+[; ;seven.c: 8:     LATD = 0;
+[e = _LATD -> -> 0 `i `uc ]
+"9
+[; ;seven.c: 9:     TRISAbits.TRISA1 = 0;
+[e = . . _TRISAbits 0 1 -> -> 0 `i `uc ]
+"10
+[; ;seven.c: 10:     TRISAbits.TRISA2 = 0;
+[e = . . _TRISAbits 0 2 -> -> 0 `i `uc ]
+"11
+[; ;seven.c: 11:     TRISAbits.TRISA3 = 0;
+[e = . . _TRISAbits 0 3 -> -> 0 `i `uc ]
+"12
+[; ;seven.c: 12:     LATA = 0b00001110;
+[e = _LATA -> -> 14 `i `uc ]
+"13
+[; ;seven.c: 13:     TRISBbits.TRISB0 = 1;
+[e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
+"14
+[; ;seven.c: 14:     PORTBbits.RB0;
+[e . . _PORTBbits 0 0 ]
+"16
+[; ;seven.c: 16:     RCONbits.IPEN = 1;
+[e = . . _RCONbits 5 7 -> -> 1 `i `uc ]
+"17
+[; ;seven.c: 17:     INTCONbits.GIEH = 1;
+[e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
+"18
+[; ;seven.c: 18:     INTCONbits.GIEL = 1;
+[e = . . _INTCONbits 2 1 -> -> 1 `i `uc ]
+"20
+[; ;seven.c: 20:     INTCONbits.TMR0IE = 1;
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+"21
+[; ;seven.c: 21:     INTCONbits.TMR0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"22
+[; ;seven.c: 22:     T0CONbits.TMR0ON = 1;
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+"23
+[; ;seven.c: 23:     T0CONbits.T08BIT = 0;
+[e = . . _T0CONbits 0 4 -> -> 0 `i `uc ]
+"24
+[; ;seven.c: 24:     T0CONbits.T0CS = 0;
+[e = . . _T0CONbits 0 3 -> -> 0 `i `uc ]
+"25
+[; ;seven.c: 25:     T0CONbits.PSA = 0;
+[e = . . _T0CONbits 0 1 -> -> 0 `i `uc ]
+"26
+[; ;seven.c: 26:     TMR0H = 11;
+[e = _TMR0H -> -> 11 `i `uc ]
+"27
+[; ;seven.c: 27:     TMR0L = 219;
+[e = _TMR0L -> -> 219 `i `uc ]
+"28
+[; ;seven.c: 28:     T0CONbits.T0PS = 0b011;
+[e = . . _T0CONbits 0 0 -> -> 3 `i `uc ]
+"30
+[; ;seven.c: 30:     TRISCbits.TRISC3 = 0;
+[e = . . _TRISCbits 0 3 -> -> 0 `i `uc ]
+"31
+[; ;seven.c: 31:     LATCbits.LC3 = 0;
+[e = . . _LATCbits 1 3 -> -> 0 `i `uc ]
+"32
+[; ;seven.c: 32: }
+[e :UE 281 ]
+}
+"34
+[; ;seven.c: 34: void change_num(int num){
+[v _change_num `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _change_num ]
+[v _num `i ~T0 @X0 1 r1 ]
+[f ]
+"35
+[; ;seven.c: 35:     digit2 = num / 100;
+[e = _digit2 / _num -> 100 `i ]
+"36
+[; ;seven.c: 36:     num %= 100;
+[e =% _num -> 100 `i ]
+"37
+[; ;seven.c: 37:     digit1 = num / 10;
+[e = _digit1 / _num -> 10 `i ]
+"38
+[; ;seven.c: 38:     digit0 = num % 10;
+[e = _digit0 % _num -> 10 `i ]
+"39
+[; ;seven.c: 39:     switch(digit0){
+[e $U 284  ]
+{
+"40
+[; ;seven.c: 40:         case 0: digit0 = 0b00111111; break;
+[e :U 285 ]
+[e = _digit0 -> 63 `i ]
+[e $U 283  ]
+"41
+[; ;seven.c: 41:         case 1: digit0 = 0b00000110; break;
+[e :U 286 ]
+[e = _digit0 -> 6 `i ]
+[e $U 283  ]
+"42
+[; ;seven.c: 42:         case 2: digit0 = 0b01011011; break;
+[e :U 287 ]
+[e = _digit0 -> 91 `i ]
+[e $U 283  ]
+"43
+[; ;seven.c: 43:         case 3: digit0 = 0b01001111; break;
+[e :U 288 ]
+[e = _digit0 -> 79 `i ]
+[e $U 283  ]
+"44
+[; ;seven.c: 44:         case 4: digit0 = 0b01100110; break;
+[e :U 289 ]
+[e = _digit0 -> 102 `i ]
+[e $U 283  ]
+"45
+[; ;seven.c: 45:         case 5: digit0 = 0b01101101; break;
+[e :U 290 ]
+[e = _digit0 -> 109 `i ]
+[e $U 283  ]
+"46
+[; ;seven.c: 46:         case 6: digit0 = 0b01111101; break;
+[e :U 291 ]
+[e = _digit0 -> 125 `i ]
+[e $U 283  ]
+"47
+[; ;seven.c: 47:         case 7: digit0 = 0b00100111; break;
+[e :U 292 ]
+[e = _digit0 -> 39 `i ]
+[e $U 283  ]
+"48
+[; ;seven.c: 48:         case 8: digit0 = 0b01111111; break;
+[e :U 293 ]
+[e = _digit0 -> 127 `i ]
+[e $U 283  ]
+"49
+[; ;seven.c: 49:         case 9: digit0 = 0b01101111; break;
+[e :U 294 ]
+[e = _digit0 -> 111 `i ]
+[e $U 283  ]
+"50
+[; ;seven.c: 50:     }
+}
+[e $U 283  ]
+[e :U 284 ]
+[e [\ _digit0 , $ -> 0 `i 285
+ , $ -> 1 `i 286
+ , $ -> 2 `i 287
+ , $ -> 3 `i 288
+ , $ -> 4 `i 289
+ , $ -> 5 `i 290
+ , $ -> 6 `i 291
+ , $ -> 7 `i 292
+ , $ -> 8 `i 293
+ , $ -> 9 `i 294
+ 283 ]
+[e :U 283 ]
+"51
+[; ;seven.c: 51:     switch(digit1){
+[e $U 296  ]
+{
+"52
+[; ;seven.c: 52:         case 0: digit1 = 0b00111111; break;
+[e :U 297 ]
+[e = _digit1 -> 63 `i ]
+[e $U 295  ]
+"53
+[; ;seven.c: 53:         case 1: digit1 = 0b00000110; break;
+[e :U 298 ]
+[e = _digit1 -> 6 `i ]
+[e $U 295  ]
+"54
+[; ;seven.c: 54:         case 2: digit1 = 0b01011011; break;
+[e :U 299 ]
+[e = _digit1 -> 91 `i ]
+[e $U 295  ]
+"55
+[; ;seven.c: 55:         case 3: digit1 = 0b01001111; break;
+[e :U 300 ]
+[e = _digit1 -> 79 `i ]
+[e $U 295  ]
+"56
+[; ;seven.c: 56:         case 4: digit1 = 0b01100110; break;
+[e :U 301 ]
+[e = _digit1 -> 102 `i ]
+[e $U 295  ]
+"57
+[; ;seven.c: 57:         case 5: digit1 = 0b01101101; break;
+[e :U 302 ]
+[e = _digit1 -> 109 `i ]
+[e $U 295  ]
+"58
+[; ;seven.c: 58:         case 6: digit1 = 0b01111101; break;
+[e :U 303 ]
+[e = _digit1 -> 125 `i ]
+[e $U 295  ]
+"59
+[; ;seven.c: 59:         case 7: digit1 = 0b00100111; break;
+[e :U 304 ]
+[e = _digit1 -> 39 `i ]
+[e $U 295  ]
+"60
+[; ;seven.c: 60:         case 8: digit1 = 0b01111111; break;
+[e :U 305 ]
+[e = _digit1 -> 127 `i ]
+[e $U 295  ]
+"61
+[; ;seven.c: 61:         case 9: digit1 = 0b01101111; break;
+[e :U 306 ]
+[e = _digit1 -> 111 `i ]
+[e $U 295  ]
+"62
+[; ;seven.c: 62:     }
+}
+[e $U 295  ]
+[e :U 296 ]
+[e [\ _digit1 , $ -> 0 `i 297
+ , $ -> 1 `i 298
+ , $ -> 2 `i 299
+ , $ -> 3 `i 300
+ , $ -> 4 `i 301
+ , $ -> 5 `i 302
+ , $ -> 6 `i 303
+ , $ -> 7 `i 304
+ , $ -> 8 `i 305
+ , $ -> 9 `i 306
+ 295 ]
+[e :U 295 ]
+"63
+[; ;seven.c: 63:     switch(digit2){
+[e $U 308  ]
+{
+"64
+[; ;seven.c: 64:         case 0: digit2 = 0b00111111; break;
+[e :U 309 ]
+[e = _digit2 -> 63 `i ]
+[e $U 307  ]
+"65
+[; ;seven.c: 65:         case 1: digit2 = 0b00000110; break;
+[e :U 310 ]
+[e = _digit2 -> 6 `i ]
+[e $U 307  ]
+"66
+[; ;seven.c: 66:         case 2: digit2 = 0b01011011; break;
+[e :U 311 ]
+[e = _digit2 -> 91 `i ]
+[e $U 307  ]
+"67
+[; ;seven.c: 67:         case 3: digit2 = 0b01001111; break;
+[e :U 312 ]
+[e = _digit2 -> 79 `i ]
+[e $U 307  ]
+"68
+[; ;seven.c: 68:         case 4: digit2 = 0b01100110; break;
+[e :U 313 ]
+[e = _digit2 -> 102 `i ]
+[e $U 307  ]
+"69
+[; ;seven.c: 69:         case 5: digit2 = 0b01101101; break;
+[e :U 314 ]
+[e = _digit2 -> 109 `i ]
+[e $U 307  ]
+"70
+[; ;seven.c: 70:         case 6: digit2 = 0b01111101; break;
+[e :U 315 ]
+[e = _digit2 -> 125 `i ]
+[e $U 307  ]
+"71
+[; ;seven.c: 71:         case 7: digit2 = 0b00100111; break;
+[e :U 316 ]
+[e = _digit2 -> 39 `i ]
+[e $U 307  ]
+"72
+[; ;seven.c: 72:         case 8: digit2 = 0b01111111; break;
+[e :U 317 ]
+[e = _digit2 -> 127 `i ]
+[e $U 307  ]
+"73
+[; ;seven.c: 73:         case 9: digit2 = 0b01101111; break;
+[e :U 318 ]
+[e = _digit2 -> 111 `i ]
+[e $U 307  ]
+"74
+[; ;seven.c: 74:     }
+}
+[e $U 307  ]
+[e :U 308 ]
+[e [\ _digit2 , $ -> 0 `i 309
+ , $ -> 1 `i 310
+ , $ -> 2 `i 311
+ , $ -> 3 `i 312
+ , $ -> 4 `i 313
+ , $ -> 5 `i 314
+ , $ -> 6 `i 315
+ , $ -> 7 `i 316
+ , $ -> 8 `i 317
+ , $ -> 9 `i 318
+ 307 ]
+[e :U 307 ]
+"75
+[; ;seven.c: 75: }
+[e :UE 282 ]
+}
