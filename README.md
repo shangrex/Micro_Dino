@@ -1,2 +1,27 @@
 # Micro_Dino
-Use Microprocessor(PIC18F4520) &amp; Unity to play game
+
+A dino game and a car driving game implemented by PIC18F4520 microprocessor &amp; Unity.
+
+## Circuit
+
+Breadboard for three-axis accelerometer (ADXL335), variable resistors, button, and uart.
+
+![](./images/circuit1.png)
+
+Breadboard for seven-segment display (C-563G-12) and buzzer.
+
+![](./images/circuit2.png)
+
+Real picture of the circuit.
+
+![](./images/circuit3.jpg)
+
+## Demo
+
+Play dino game by three-axis accelerometer.
+
+![](images/demo1.gif)
+
+Play car driving game by two variable resistors, one as accelerator, the other as steering wheel.
+
+![](images/demo2.gif)
